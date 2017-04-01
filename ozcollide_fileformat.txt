@@ -1,0 +1,91 @@
+
+OZCollide, native AABB tree fileformat based on IFF (Interchange File Format)
+Designed by Igor Kravtchenko Copyright (C) 2014
+
+'AABB'
+{
+	BYTE leafType	// 0 = polygon , 1 = sphere, 2 = aabb
+	BYTE leafDepth // Original leaf depth
+	INT nbNodes // typically nbNodes = nbLeafs-1
+	INT nbLeafs
+
+	'NPOL'
+	{
+		DWORD totalNbPolys
+	}
+
+	'NEDG'
+	{
+		DWORD totalNbEdges
+	}
+
+
+	'PNTS'
+	{
+		FLOAT3 [points] * nbPoints   -> nbPoints = chunkSize/12
+	}
+
+	'DTYP'	// DATA TYPE
+	{
+		// Type of the user data we can found on each leaf
+		INT type
+	}
+
+	'NODS'
+	{
+		{
+			FLOAT3	center
+			FLOAT3	extent
+			INT	leftID
+			INT	rightID
+			// ID: -1 if the current node has no child
+			// Otherwhise, check the bit 31
+			// 0: child is another node
+			// 1: child is a leaf
+			// bits 30-0 represent the index of node or leaf
+		} * nbNodes
+	}
+
+	'LEFS'
+	{
+		{
+			FLOAT3	center
+			FLOAT3	extent
+			INT	nbPols
+			{
+				INT nbVerts
+				INT vertices[nbVerts]
+
+			} * nbPols
+		} * nbLeafs
+	}
+
+	'LEFS'
+	{
+		{
+			FLOAT3	center
+			FLOAT3	extent
+			INT	nbBoxes
+			{
+				FLOAT3 center
+				FLOAT3 extent
+
+			} * nbBoxes
+		} * nbLeafs
+	}
+
+	'LEFS'
+	{
+		{
+			FLOAT3	center
+			FLOAT3	extent
+			INT	nbSpheres
+			{
+				FLOAT3 center
+				FLOAT radius
+
+			} * nbBoxes
+		} * nbLeafs
+	}
+}
+
