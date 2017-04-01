@@ -19,6 +19,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 Contact the author: igor@tsarevitch.org
 */
 
+#include <ozcollide/aabbtree_aabb.h>
+
+#include <ozcollide/dataio.h>
+
 ENTER_NAMESPACE_OZCOLLIDE
 
 ERR AABBTreeAABB::loadBinary(const char *_fileName, AABBTreeAABB **_tree)

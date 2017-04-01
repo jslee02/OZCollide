@@ -23,27 +23,27 @@ Contact the author: igor@tsarevitch.org
 
 ENTER_NAMESPACE_OZCOLLIDE
 
-Date::Date()
-{
-	year = 2002;
-	month = -1;
-	day = -1;
-	hour = -1;
-	minut = -1;
-}
+//Date::Date()
+//{
+//	year = 2002;
+//	month = -1;
+//	day = -1;
+//	hour = -1;
+//	minut = -1;
+//}
 
-void setCurrentDateTo(Date &date)
-{
-	time_t now;
-	tm when;
+//void setCurrentDateTo(Date &date)
+//{
+//	time_t now;
+//	tm when;
 
-	time(&now);
-	when = *localtime(&now);
-	date.year = when.tm_year + 1900;
-	date.month = when.tm_mon + 1;
-	date.day = when.tm_mday;
-	date.hour = when.tm_hour;
-	date.minut = when.tm_min;
-}
+//	time(&now);
+//	when = *localtime(&now);
+//	date.year = when.tm_year + 1900;
+//	date.month = when.tm_mon + 1;
+//	date.day = when.tm_mday;
+//	date.hour = when.tm_hour;
+//	date.minut = when.tm_min;
+//}
 
 LEAVE_NAMESPACE
